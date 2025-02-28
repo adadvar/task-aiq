@@ -24,6 +24,7 @@ const FeaturesSection = memo(() => {
         <SegmentedSection />
         <VideoCarouselSection />
       </Flex>
+      <div style={{ height: "48px" }}></div>
     </Center>
   );
 });
