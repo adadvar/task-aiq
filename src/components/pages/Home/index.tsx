@@ -1,5 +1,6 @@
 "use client";
 
+import FeaturesSection from "./FeaturesSection";
 import HeroSection from "./HeroSection";
 
 const Home = () => {
@@ -7,7 +8,7 @@ const Home = () => {
     <>
       <HeroSection />
 
-      {/* TODO: You should implement features video showcase component here */}
+      <FeaturesSection />
     </>
   );
 };
