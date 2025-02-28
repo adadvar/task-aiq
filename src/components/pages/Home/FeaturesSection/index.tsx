@@ -3,6 +3,7 @@ import { memo } from "react";
 import { Center } from "react-layout-kit";
 import SegmentedSection from "./SegmentedSection";
 import { Flex } from "antd";
+import VideoCarouselSection from "./VideoCarouselSection";
 
 const useStyles = createStyles(({ css }) => ({
   container: css`
@@ -18,16 +19,10 @@ const FeaturesSection = memo(() => {
   const { styles } = useStyles();
 
   return (
-    <Center
-      className={styles.container}
-      as={"section"}
-      style={{
-        display: "flex",
-        alignItems: "center",
-      }}
-    >
-      <Flex vertical gap={24}>
+    <Center className={styles.container} as={"section"} style={{}}>
+      <Flex vertical gap={24} align="center" justify="center">
         <SegmentedSection />
+        <VideoCarouselSection />
       </Flex>
     </Center>
   );
