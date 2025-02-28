@@ -1,4 +1,5 @@
 import { Theme, css } from "antd-style";
+import "../../public/fonts/shabnam/shabnam-font.css";
 
 // fix ios input keyboard
 // overflow: hidden;
@@ -13,6 +14,7 @@ export default ({ token }: { prefixCls: string; token: Theme }) => css`
   * {
     scrollbar-color: ${token.colorFill} transparent;
     scrollbar-width: thin;
+    font-family: Shabnam, sans-serif;
 
     ::-webkit-scrollbar {
       width: 0.75em;
