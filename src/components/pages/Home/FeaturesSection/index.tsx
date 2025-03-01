@@ -1,5 +1,5 @@
 import { createStyles } from "antd-style";
-import { memo } from "react";
+import { memo, useState } from "react";
 import { Center } from "react-layout-kit";
 import SegmentedSection from "./SegmentedSection";
 import { Flex } from "antd";
@@ -17,12 +17,16 @@ const useStyles = createStyles(({ css }) => ({
 
 const FeaturesSection = memo(() => {
   const { styles } = useStyles();
+  const [selectedFeature, setSelectedFeature] = useState("overview");
 
   return (
     <Center className={styles.container} as={"section"} style={{}}>
       <Flex vertical gap={24} align="center" justify="center">
-        <SegmentedSection />
-        <VideoCarouselSection />
+        <SegmentedSection
+          selectedFeature={selectedFeature}
+          setSelectedFeature={(value: string) => setSelectedFeature(value)}
+        />
+        <VideoCarouselSection selectedFeature={selectedFeature} />
       </Flex>
       <div style={{ height: "48px" }}></div>
     </Center>

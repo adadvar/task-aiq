@@ -1,5 +1,5 @@
 import { Segmented } from "antd";
-import React from "react";
+import React, { useState } from "react";
 import landingData from "@/../locales/fa-IR/landing.json";
 import { createStyles } from "antd-style";
 
@@ -11,7 +11,13 @@ const useStyles = createStyles(({ css }) => ({
   `,
 }));
 
-const SegmentedSection = () => {
+const SegmentedSection = ({
+  selectedFeature,
+  setSelectedFeature,
+}: {
+  selectedFeature: string;
+  setSelectedFeature: (value: string) => void;
+}) => {
   const { styles } = useStyles();
 
   const showcaseOptions = Object.entries(landingData.features.showcase).map(
@@ -21,9 +27,10 @@ const SegmentedSection = () => {
   return (
     <Segmented<string>
       options={showcaseOptions}
-      defaultValue={"overview"}
+      value={selectedFeature}
       size="large"
       className={styles.container}
+      onChange={setSelectedFeature}
     />
   );
 };
