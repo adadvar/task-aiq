@@ -15,17 +15,18 @@ function useScrollAnimation(
       if (elementRef.current) {
         const scrollY = window.scrollY;
 
-        // محاسبه چرخش
+        // Calculate rotation
         let rotation = scrollY / rotationSpeed;
         rotation = Math.min(rotation, maxRotation);
         rotation = Math.max(rotation, 0);
 
-        // محاسبه جابجایی در محور Y
+        // Calculate Y translation
         let translationY = maxYTranslation + scrollY / translationSpeed;
         translationY = Math.min(translationY, 0);
         translationY = Math.max(translationY, maxYTranslation);
         console.log(translationY);
 
+        // Apply transformation to the element
         elementRef.current.style.transform = `rotateX(${
           maxRotation - rotation
         }deg) translateY(${translationY}px)`;

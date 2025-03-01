@@ -39,15 +39,18 @@ const VideoCarouselSection = memo(
   }) => {
     const { styles } = useStyles();
     const ref = useRef(null);
-    const elementRef = useScrollAnimation();
+    const elementRef = useScrollAnimation(); // Use custom scroll animation hook
+
+    // Function to find index of selected feature
 
     const findIndex = (key: string) => {
       const keys = Object.keys(landingData.features.showcase);
       return keys.indexOf(key);
     };
 
-    const selectedFeatureIndex = findIndex(selectedFeature);
+    const selectedFeatureIndex = findIndex(selectedFeature); // Get index of selected feature
 
+    // Effect to navigate carousel to selected feature index
     useEffect(() => {
       if (ref.current) {
         (ref.current as { goTo: (index: number) => void }).goTo(
@@ -58,8 +61,12 @@ const VideoCarouselSection = memo(
 
     return (
       <div ref={elementRef}>
+        {/* Attach scroll animation ref */}
         <div className={styles.container}>
           <Carousel className={styles.carousel} ref={ref}>
+            {/* The VideoList component from Ant Design's Carousel could not be used because it creates a div wrapper around all VideoItem components, disrupting the intended layout and styling. 
+              Therefore, individual VideoItem components are rendered directly within the Carousel.
+            */}
             <VideoItem
               video={"0"}
               carouselRef={ref}

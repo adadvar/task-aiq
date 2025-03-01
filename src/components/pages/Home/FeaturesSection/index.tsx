@@ -17,7 +17,7 @@ const useStyles = createStyles(({ css }) => ({
 
 const FeaturesSection = memo(() => {
   const { styles } = useStyles();
-  const [selectedFeature, setSelectedFeature] = useState("overview");
+  const [selectedFeature, setSelectedFeature] = useState("overview"); // Manage selected feature state in segmented control
 
   return (
     <Center className={styles.container} as={"section"}>

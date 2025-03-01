@@ -21,6 +21,7 @@ const SegmentedSection = memo(
   }) => {
     const { styles } = useStyles();
 
+    // Transform showcase data into options for Segmented component
     const showcaseOptions = Object.entries(landingData.features.showcase).map(
       ([value, label]) => ({ label, value })
     );

@@ -24,10 +24,11 @@ const VideoItem = memo(
   }) => {
     const { styles } = useStyles();
 
+    // Function to get the next showcase item
     const nextShowCase = (index: string) => {
       const values = Object.keys(landingData.features.showcase);
-      if (values.length === Number(index) + 1) return values[0];
-      return values[Number(index) + 1];
+      if (values.length === Number(index) + 1) return values[0]; // If last item, return first
+      return values[Number(index) + 1]; // Return next item
     };
 
     return (
@@ -37,10 +38,11 @@ const VideoItem = memo(
           controls
           preload="none"
           className={styles.video}
+          // Event handler for video end
           onEnded={() => {
             if (carouselRef.current)
-              (carouselRef.current as { next: () => void }).next();
-            setSelectedFeature(nextShowCase(video));
+              (carouselRef.current as { next: () => void }).next(); // Navigate to next carousel item
+            setSelectedFeature(nextShowCase(video)); // Set next showcase item
           }}
         >
           <source src={`/videos/landing/${video}.webm`} />
