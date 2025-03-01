@@ -20,8 +20,14 @@ const FeaturesSection = memo(() => {
   const [selectedFeature, setSelectedFeature] = useState("overview");
 
   return (
-    <Center className={styles.container} as={"section"} style={{}}>
-      <Flex vertical gap={24} align="center" justify="center">
+    <Center className={styles.container} as={"section"}>
+      <Flex
+        vertical
+        gap={24}
+        align="center"
+        justify="center"
+        style={{ perspective: "1000px" }}
+      >
         <SegmentedSection
           selectedFeature={selectedFeature}
           setSelectedFeature={(value: string) => setSelectedFeature(value)}

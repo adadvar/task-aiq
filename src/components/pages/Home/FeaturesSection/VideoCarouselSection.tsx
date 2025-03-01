@@ -3,6 +3,7 @@ import { createStyles } from "antd-style";
 import { useEffect, useRef } from "react";
 import landingData from "@/../locales/fa-IR/landing.json";
 import VideoItem from "./VideoItem";
+import useScrollAnimation from "@/hooks/useScrollAnimation";
 
 const useStyles = createStyles(({ css }) => ({
   container: css`
@@ -37,6 +38,7 @@ const VideoCarouselSection = ({
 }) => {
   const { styles } = useStyles();
   const ref = useRef(null);
+  const elementRef = useScrollAnimation();
 
   const findIndex = (key: string) => {
     const keys = Object.keys(landingData.features.showcase);
@@ -54,7 +56,7 @@ const VideoCarouselSection = ({
   }, [selectedFeature]);
 
   return (
-    <div>
+    <div ref={elementRef}>
       <div className={styles.container}>
         <Carousel className={styles.carousel} ref={ref}>
           <VideoItem
