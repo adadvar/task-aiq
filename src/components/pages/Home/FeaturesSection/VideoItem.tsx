@@ -1,5 +1,6 @@
 import { createStyles } from "antd-style";
 import landingData from "@/../locales/fa-IR/landing.json";
+import { memo } from "react";
 
 const useStyles = createStyles(({ css }) => ({
   videoContainer: css`
@@ -11,40 +12,42 @@ const useStyles = createStyles(({ css }) => ({
   `,
 }));
 
-const VideoItem = ({
-  video,
-  carouselRef,
-  setSelectedFeature,
-}: {
-  video: string;
-  carouselRef: React.RefObject<null>;
-  setSelectedFeature: (value: string) => void;
-}) => {
-  const { styles } = useStyles();
+const VideoItem = memo(
+  ({
+    video,
+    carouselRef,
+    setSelectedFeature,
+  }: {
+    video: string;
+    carouselRef: React.RefObject<null>;
+    setSelectedFeature: (value: string) => void;
+  }) => {
+    const { styles } = useStyles();
 
-  const nextShowCase = (index: string) => {
-    const values = Object.keys(landingData.features.showcase);
-    if (values.length === Number(index) + 1) return values[0];
-    return values[Number(index) + 1];
-  };
+    const nextShowCase = (index: string) => {
+      const values = Object.keys(landingData.features.showcase);
+      if (values.length === Number(index) + 1) return values[0];
+      return values[Number(index) + 1];
+    };
 
-  return (
-    <div className={styles.videoContainer}>
-      <video
-        poster={`/images/landing/${video}.webp`}
-        controls
-        preload="none"
-        className={styles.video}
-        onEnded={() => {
-          if (carouselRef.current)
-            (carouselRef.current as { next: () => void }).next();
-          setSelectedFeature(nextShowCase(video));
-        }}
-      >
-        <source src={`/videos/landing/${video}.webm`} />
-      </video>
-    </div>
-  );
-};
+    return (
+      <div className={styles.videoContainer}>
+        <video
+          poster={`/images/landing/${video}.webp`}
+          controls
+          preload="none"
+          className={styles.video}
+          onEnded={() => {
+            if (carouselRef.current)
+              (carouselRef.current as { next: () => void }).next();
+            setSelectedFeature(nextShowCase(video));
+          }}
+        >
+          <source src={`/videos/landing/${video}.webm`} />
+        </video>
+      </div>
+    );
+  }
+);
 
 export default VideoItem;

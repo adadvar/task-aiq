@@ -25,6 +25,8 @@
 - Used `useEffect` to navigate to the corresponding video index in the carousel when the selected item in the segmented section changes.
 - Used the `Carousel` component from the Ant Design library to display the videos.
 - Displayed the videos in the carousel using the `VideoItem` component.
+- Used the `useScrollAnimation` hook to add a scroll effect to the `VideoCarouselSection` component.
+- Used `memo` from React to memoize the `VideoCarouselSection` component.
 
 ## 5. Creating the VideoItem Component
 
@@ -36,5 +38,4 @@
 
 ## 6. Adding Scroll Effect
 
-- Used the `useScrollAnimation` hook to add a scroll effect to the `VideoCarouselSection` component.
-- This effect includes rotation on the X-axis and translation on the Y-axis.
+- The scroll effect includes rotation on the X-axis and translation on the Y-axis.
