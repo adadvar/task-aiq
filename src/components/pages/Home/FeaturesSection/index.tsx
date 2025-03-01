@@ -26,7 +26,10 @@ const FeaturesSection = memo(() => {
           selectedFeature={selectedFeature}
           setSelectedFeature={(value: string) => setSelectedFeature(value)}
         />
-        <VideoCarouselSection selectedFeature={selectedFeature} />
+        <VideoCarouselSection
+          selectedFeature={selectedFeature}
+          setSelectedFeature={(value: string) => setSelectedFeature(value)}
+        />
       </Flex>
       <div style={{ height: "48px" }}></div>
     </Center>

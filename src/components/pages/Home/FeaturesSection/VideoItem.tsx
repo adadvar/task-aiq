@@ -1,6 +1,5 @@
 import { createStyles } from "antd-style";
-import React from "react";
-import { GotoType } from "./VideoCarouselSection";
+import landingData from "@/../locales/fa-IR/landing.json";
 
 const useStyles = createStyles(({ css }) => ({
   videoContainer: css`
@@ -15,11 +14,19 @@ const useStyles = createStyles(({ css }) => ({
 const VideoItem = ({
   video,
   carouselRef,
+  setSelectedFeature,
 }: {
   video: string;
-  carouselRef: React.RefObject<null | GotoType>;
+  carouselRef: React.RefObject<null>;
+  setSelectedFeature: (value: string) => void;
 }) => {
   const { styles } = useStyles();
+
+  const nextShowCase = (index: string) => {
+    const values = Object.keys(landingData.features.showcase);
+    if (values.length === Number(index) + 1) return values[0];
+    return values[Number(index) + 1];
+  };
 
   return (
     <div className={styles.videoContainer}>
@@ -28,7 +35,12 @@ const VideoItem = ({
         controls
         preload="none"
         className={styles.video}
-        onEnded={() => carouselRef?.current?.next()}
+        onEnded={() => {
+          if (carouselRef.current)
+            (carouselRef.current as { next: () => void }).next();
+          setSelectedFeature(nextShowCase(video));
+          console.log(nextShowCase(video));
+        }}
       >
         <source src={`/videos/landing/${video}.webm`} />
       </video>
