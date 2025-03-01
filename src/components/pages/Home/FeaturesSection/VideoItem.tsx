@@ -39,7 +39,6 @@ const VideoItem = ({
           if (carouselRef.current)
             (carouselRef.current as { next: () => void }).next();
           setSelectedFeature(nextShowCase(video));
-          console.log(nextShowCase(video));
         }}
       >
         <source src={`/videos/landing/${video}.webm`} />
